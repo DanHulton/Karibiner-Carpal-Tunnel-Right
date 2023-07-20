@@ -4,9 +4,6 @@ const mapping:Mapping = {
     // Delete is very important, so it is mapped to the easy-to-reach tilde
     "grave_accent_and_tilde": "delete_or_backspace",
 
-    // Return, also very important, mapped to caps lock
-    "caps_lock": "return_or_enter",
-
     "1": "0",
     "2": "9",
     "3": "8",

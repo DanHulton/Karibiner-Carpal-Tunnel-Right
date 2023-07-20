@@ -7,6 +7,7 @@
       "manipulators": [
         {
           "type": "basic",
+          "description": "Spacebar is a modifier, unless caps_lock is being held",
           "from": {
             "key_code": "spacebar",
             "modifiers": {
@@ -35,10 +36,42 @@
             {
               "key_code": "spacebar"
             }
+          ],
+          "conditions": [
+            {
+              "type": "variable_unless",
+              "name": "caps_lock_modifier",
+              "value": 1
+            }
           ]
         },
         {
           "type": "basic",
+          "description": "Spacebar is caps lock if caps lock is held.",
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "caps_lock"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "caps_lock_modifier",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "description": "Caps lock is a modifier when held.",
           "from": {
             "key_code": "caps_lock",
             "modifiers": {
@@ -65,7 +98,7 @@
           ],
           "to_if_alone": [
             {
-              "key_code": "caps_lock"
+              "key_code": "return_or_enter"
             }
           ]
         },
@@ -667,108 +700,6 @@
           "to": [
             {
               "key_code": "delete_or_backspace",
-              "modifiers": [
-                "left_shift",
-                "caps_lock"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "variable_if",
-              "name": "space_modifier",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "caps_lock",
-            "modifiers": {
-              "mandatory": []
-            }
-          },
-          "to": [
-            {
-              "key_code": "return_or_enter",
-              "modifiers": []
-            }
-          ],
-          "conditions": [
-            {
-              "type": "variable_if",
-              "name": "space_modifier",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "caps_lock",
-            "modifiers": {
-              "mandatory": [
-                "left_shift"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "return_or_enter",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "variable_if",
-              "name": "space_modifier",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "caps_lock",
-            "modifiers": {
-              "mandatory": [
-                "caps_lock"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "return_or_enter",
-              "modifiers": [
-                "caps_lock"
-              ]
-            }
-          ],
-          "conditions": [
-            {
-              "type": "variable_if",
-              "name": "space_modifier",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "caps_lock",
-            "modifiers": {
-              "mandatory": [
-                "left_shift",
-                "caps_lock"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "return_or_enter",
               "modifiers": [
                 "left_shift",
                 "caps_lock"

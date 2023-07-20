@@ -15,6 +15,7 @@ interface KaribinerRule {
 
 interface KaribinerManipulator {
   type: string;
+  description?: string;
   from: KaribinerFromKey;
   to: KaribinerToKey[];
   to_after_key_up?: KaribinerToAfterKeyUp[];

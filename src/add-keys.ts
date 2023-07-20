@@ -15,6 +15,23 @@ const CAPS_LOCK = 'caps_lock';
 const VARIABLE_IF = 'variable_if';
 
 /**
+ * Add key mappings that aren't dependent on any modifiers or conditions.
+ *
+ * @param config - The config file to add to.
+ */
+export function addDirectMappingKeys(config: KaribinerConfig): KaribinerConfig {
+  for (const [from, to] of Object.entries(mapping.space_modifier)) {
+    config.rules[0].manipulators.push({
+      type: 'basic',
+      from: { key_code: from },
+      to: [{ key_code: to }],
+    });
+  }
+
+  return config;
+}
+
+/**
  * Add spacebar-based modifier keys to the config file.
  *
  * @param config - The config file to add to.
