@@ -1,6 +1,6 @@
-export default {
+const mapping:Mapping = {
   // For the most part, the keyboard is mirrored when space is held
-  "space-modifier": {
+  "space_modifier": {
     // Delete is very important, so it is mapped to the easy-to-reach tilde
     "grave_accent_and_tilde": "delete_or_backspace",
 
@@ -32,7 +32,7 @@ export default {
   },
 
   // Punctuation characters, specifically, are mirrored when holding caps lock
-  "caps-lock-modifier": {
+  "caps_lock_modifier": {
     "1": "equal_sign",
     "2": "hyphen",
 
@@ -50,10 +50,12 @@ export default {
 
   // And we need arrow keys, and need to be able to press Command and Shift
   // with them, for editing, so we "hold" the touchpad with our palm
-  "touchpad-modifier": {
+  "touchpad_modifier": {
     "w": "up_arrow",
     "a": "left_arrow",
     "s": "down_arrow",
     "d": "right_arrow",
   }
 };
+
+export default mapping;
