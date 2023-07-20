@@ -14,6 +14,18 @@ const CAPS_LOCK = 'caps_lock';
 // Other magic strings
 const VARIABLE_IF = 'variable_if';
 
+const ALL_MODIFIERS = [
+  [],
+  [LEFT_SHIFT],
+  [LEFT_COMMAND],
+  [LEFT_SHIFT, LEFT_COMMAND],
+  [CAPS_LOCK],
+  [LEFT_SHIFT, CAPS_LOCK],
+  [LEFT_COMMAND, CAPS_LOCK],
+  [LEFT_SHIFT, LEFT_COMMAND, CAPS_LOCK],
+];
+
+
 /**
  * Add key mappings that aren't dependent on any modifiers or conditions.
  *
@@ -37,15 +49,8 @@ export function addDirectMappingKeys(config: KaribinerConfig): KaribinerConfig {
  * @param config - The config file to add to.
  */
 export function addSpaceModifierKeys(config: KaribinerConfig): KaribinerConfig {
-  const modifiersList = [
-    [],
-    [LEFT_SHIFT],
-    [CAPS_LOCK],
-    [LEFT_SHIFT, CAPS_LOCK],
-  ];
-
   for (const [from, to] of Object.entries(mapping.space_modifier)) {
-    for (const modifiers of modifiersList) {
+    for (const modifiers of ALL_MODIFIERS) {
       config.rules[0].manipulators.push(
         buildManipulator(from, to, [SPACE_MODIFIER], modifiers),
       );
@@ -61,15 +66,8 @@ export function addSpaceModifierKeys(config: KaribinerConfig): KaribinerConfig {
  * @param config - The config file to add to.
  */
 export function addCapsLockModifierKeys(config: KaribinerConfig): KaribinerConfig {
-  const modifiersList = [
-    [],
-    [LEFT_SHIFT],
-    [CAPS_LOCK],
-    [LEFT_SHIFT, CAPS_LOCK],
-  ];
-
   for (const [from, to] of Object.entries(mapping.caps_lock_modifier)) {
-    for (const modifiers of modifiersList) {
+    for (const modifiers of ALL_MODIFIERS) {
       config.rules[0].manipulators.push(
         buildManipulator(from, to, [CAPS_LOCK_MODIFIER], modifiers),
       );
@@ -85,19 +83,8 @@ export function addCapsLockModifierKeys(config: KaribinerConfig): KaribinerConfi
  * @param config - The config file to add to.
  */
 export function addTouchpadKeys(config: KaribinerConfig): KaribinerConfig {
-  const modifiersList = [
-    [],
-    [LEFT_SHIFT],
-    [LEFT_COMMAND],
-    [LEFT_SHIFT, LEFT_COMMAND],
-    [CAPS_LOCK],
-    [LEFT_SHIFT, CAPS_LOCK],
-    [LEFT_COMMAND, CAPS_LOCK],
-    [LEFT_SHIFT, LEFT_COMMAND, CAPS_LOCK],
-  ];
-
   for (const [from, to] of Object.entries(mapping.touchpad_modifier)) {
-    for (const modifiers of modifiersList) {
+    for (const modifiers of ALL_MODIFIERS) {
       config.rules[0].manipulators.push(
         buildManipulator(
           from,
