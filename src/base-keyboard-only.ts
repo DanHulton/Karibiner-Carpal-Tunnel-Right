@@ -3,7 +3,7 @@ const base:KaribinerConfig = {
   "description": "Mirrors the right side of the keyboard to the left, so if you have carpal tunnel in your right hand, you don't need to use it.",
   "rules": [
     {
-      "description": "Carpal Tunnel Right",
+      "description": "Carpal Tunnel Right (Keyboard only)",
       "manipulators": [
         {
           "type": "basic",
@@ -17,7 +17,7 @@ const base:KaribinerConfig = {
           "to": [
             {
               "set_variable": {
-                "name": "space_modifier",
+                "name": "primary_modifier",
                 "value": 1
               }
             }
@@ -25,7 +25,7 @@ const base:KaribinerConfig = {
           "to_after_key_up": [
             {
               "set_variable": {
-                "name": "space_modifier",
+                "name": "primary_modifier",
                 "value": 0
               }
             }
@@ -37,30 +37,11 @@ const base:KaribinerConfig = {
           ],
           "conditions": [{
             "type": "variable_unless",
-            "name": "caps_lock_modifier",
+            "name": "secondary_modifier",
             "value": 1,
           }],
         },
-        {
-          "type": "basic",
-          "description": "Spacebar is caps lock if caps lock is held.",
-          "from": {
-            "key_code": "spacebar",
-            "modifiers": {
-              "optional": ["any"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "caps_lock"
-            }
-          ],
-          "conditions": [{
-            "type": "variable_if",
-            "name": "caps_lock_modifier",
-            "value": 1,
-          }],
-        },
+
         {
           "type": "basic",
           "description": "Caps lock is a modifier when held.",
@@ -73,7 +54,7 @@ const base:KaribinerConfig = {
           "to": [
             {
               "set_variable": {
-                "name": "caps_lock_modifier",
+                "name": "secondary_modifier",
                 "value": 1
               }
             }
@@ -81,7 +62,7 @@ const base:KaribinerConfig = {
           "to_after_key_up": [
             {
               "set_variable": {
-                "name": "caps_lock_modifier",
+                "name": "secondary_modifier",
                 "value": 0
               }
             }

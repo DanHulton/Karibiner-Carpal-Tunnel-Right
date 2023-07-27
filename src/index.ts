@@ -1,15 +1,33 @@
 import fs from 'fs-extra';
-import base from './base';
+import baseKeyboardOnly from './base-keyboard-only';
+import baseFootPedals from './base-foot-pedals';
 import {
-  addSpaceModifierKeys,
-  addCapsLockModifierKeys,
-  addTouchpadKeys
+  addNoModifierKeys,
+  addPrimaryModifierKeys,
+  addSecondaryModifierKeys,
+  addTertiaryModifierKeys,
+  KEYBOARD_TERTIARY_MODIFIERS,
+  PEDAL_TERTIARY_MODIFIERS,
 } from './add-keys';
 
-let config = structuredClone(base);
+// Create keyboard-only config file
 
-config = addSpaceModifierKeys(config);
-config = addCapsLockModifierKeys(config);
-config = addTouchpadKeys(config);
+let configKeyboardOnly = structuredClone(baseKeyboardOnly);
 
-fs.writeJsonSync('./dist/Carpal-Tunnel-Right.json', config, { spaces: 2 });
+configKeyboardOnly = addNoModifierKeys(configKeyboardOnly, KEYBOARD_TERTIARY_MODIFIERS);
+configKeyboardOnly = addPrimaryModifierKeys(configKeyboardOnly);
+configKeyboardOnly = addSecondaryModifierKeys(configKeyboardOnly);
+configKeyboardOnly = addTertiaryModifierKeys(configKeyboardOnly, KEYBOARD_TERTIARY_MODIFIERS);
+
+fs.writeJsonSync('./dist/Carpal-Tunnel-Right-Keyboard-Only.json', configKeyboardOnly, { spaces: 2 });
+
+// Create foot pedal-based config file
+
+let configFootPedals = structuredClone(baseFootPedals);
+
+configFootPedals = addNoModifierKeys(configFootPedals, PEDAL_TERTIARY_MODIFIERS);
+configFootPedals = addPrimaryModifierKeys(configFootPedals);
+configFootPedals = addSecondaryModifierKeys(configFootPedals);
+configFootPedals = addTertiaryModifierKeys(configFootPedals, PEDAL_TERTIARY_MODIFIERS);
+
+fs.writeJsonSync('./dist/Carpal-Tunnel-Right-Foot-Pedals.json', configFootPedals, { spaces: 2 });

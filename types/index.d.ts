@@ -61,7 +61,8 @@ interface KaribinerCondition {
 // Mapping Types
 
 interface Mapping {
-  space_modifier: Record<string, string>;
-  caps_lock_modifier: Record<string, string>;
-  touchpad_modifier: Record<string, string>;
+  no_modifier: Record<string, string>;
+  primary_modifier: Record<string, string>;
+  secondary_modifier: Record<string, string>;
+  tertiary_modifier: Record<string, string>;
 }

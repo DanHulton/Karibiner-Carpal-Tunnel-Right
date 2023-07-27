@@ -1,9 +1,14 @@
 const mapping:Mapping = {
-  // For the most part, the keyboard is mirrored when space is held
-  "space_modifier": {
-    // Delete is very important, so it is mapped to the easy-to-reach tilde
-    "grave_accent_and_tilde": "delete_or_backspace",
+  "no_modifier": {
+    // Return is more important than caps lock
+    "caps_lock": "return_or_enter",
 
+    // Delete is more important than tilde
+    "grave_accent_and_tilde": "delete_or_backspace"
+  },
+
+  // For the most part, the keyboard is mirrored when space is held
+  "primary_modifier": {
     "1": "0",
     "2": "9",
     "3": "8",
@@ -29,7 +34,7 @@ const mapping:Mapping = {
   },
 
   // Punctuation characters, specifically, are mirrored when holding caps lock
-  "caps_lock_modifier": {
+  "secondary_modifier": {
     "1": "equal_sign",
     "2": "hyphen",
 
@@ -47,11 +52,15 @@ const mapping:Mapping = {
 
   // And we need arrow keys, and need to be able to press Command and Shift
   // with them, for editing, so we "hold" the touchpad with our palm
-  "touchpad_modifier": {
+  "tertiary_modifier": {
     "w": "up_arrow",
     "a": "left_arrow",
     "s": "down_arrow",
     "d": "right_arrow",
+
+    // But caps_lock and tilde are restored when secondary modifier is enabled
+    "return_or_enter": "caps_lock",
+    "delete_or_backspace": "grave_accent_and_tilde",
   }
 };
 
